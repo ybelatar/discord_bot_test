@@ -40,6 +40,7 @@ async def on_message(message):
     if message.author == client.user:
         return
 
+    print(f"Client user: {client.user}")
     if client.user.mentioned_in(message):
         # Get the message content without the bot mention
         prompt = message.content.replace(f"<@!{client.user.id}>", "").strip()
