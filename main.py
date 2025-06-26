@@ -35,15 +35,13 @@ async def on_message(message):
     sends the message content to the Ollama endpoint,
     and then edits the processing message with the response.
     """
-    print(f"Received message: {message.content}")
 
     if message.author == client.user:
         return
 
-    print(f"Client user: {client.user}")
     if client.user.mentioned_in(message):
         # Get the message content without the bot mention
-        prompt = message.content.replace(f"<@!{client.user.id}>", "").strip()
+        prompt = message.content.replace(f"<@{client.user.id}>", "").strip()
 
         # Send a processing message
         processing_message = await message.channel.send(
