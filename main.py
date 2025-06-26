@@ -16,7 +16,6 @@ print(OLLAMA_MODEL)
 
 # Set up Discord client with necessary intents
 intents = discord.Intents.default()
-intents.messages = True
 intents.message_content = True
 client = discord.Client(intents=intents)
 
@@ -36,6 +35,8 @@ async def on_message(message):
     sends the message content to the Ollama endpoint,
     and then edits the processing message with the response.
     """
+    print(f"Received message: {message.content}")
+
     if message.author == client.user:
         return
 
