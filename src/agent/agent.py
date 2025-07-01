@@ -54,7 +54,8 @@ class DiscordAdvisoryAgent:
         try:
             # Get or create session for this user
             if user_id not in self.sessions:
-                session = self.runner.session_service.create_session(
+                # Await session creation if it's async
+                session = await self.runner.session_service.create_session(
                     app_name=self.runner.app_name, user_id=user_id
                 )
                 self.sessions[user_id] = session
@@ -64,9 +65,9 @@ class DiscordAdvisoryAgent:
             # Create user content
             content = UserContent(parts=[Part(text=message)])
 
-            # Get response from agent
+            # Get response from agent using async iterator
             response_parts = []
-            for event in self.runner.run(
+            async for event in self.runner.run_async(
                 user_id=session.user_id, session_id=session.id, new_message=content
             ):
                 for part in event.content.parts:
@@ -75,17 +76,11 @@ class DiscordAdvisoryAgent:
 
             # Combine all response parts
             full_response = "".join(response_parts)
-            return (
-                full_response
-                if full_response
-                else "I'm sorry, I couldn't process your request at the moment."
-            )
+            return full_response if full_response else "Desole chui occupe."
 
         except Exception as e:
             print(f"Error getting advice from agent: {e}")
-            return (
-                "I'm experiencing some technical difficulties. Please try again later."
-            )
+            return "Oups ca marche pas."
 
     def clear_user_session(self, user_id: str):
         """Clear a user's session (useful for starting fresh)"""

@@ -1,7 +1,7 @@
 import discord
 import os
 from dotenv import load_dotenv
-from .agent.agent import discord_agent
+from src.agent.agent import discord_agent
 
 # Load environment variables
 load_dotenv()
@@ -46,10 +46,10 @@ async def on_message(message):
 
         # If no content after removing mention, provide a helpful message
         if not message_content:
-            message_content = "Hello! How can I help you today?"
+            message_content = "Salut! Comment puis-je t'aider aujourd'hui?"
 
         # Send a "thinking" message to show the bot is processing
-        thinking_message = await message.channel.send("🤔 Let me think about that...")
+        thinking_message = await message.channel.send("🤔 Mhh laisse moi reflechir...")
 
         try:
             # Get advice from the ADK agent
