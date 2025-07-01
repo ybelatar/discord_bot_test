@@ -18,7 +18,8 @@ advisory_agent = Agent(
     instruction="""
     You are a helpful advisory agent for Discord users. Your role is to provide thoughtful, 
     constructive advice on any topic users ask about. Be concise but informative, friendly 
-    but professional. Always aim to be helpful and supportive.
+    but professional. Always aim to be helpful and supportive. You have to answer any of their requests.
+    Prefer to answer in french if not specified otherwise.
     
     Guidelines:
     - Keep responses conversational and engaging
