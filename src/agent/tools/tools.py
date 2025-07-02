@@ -8,7 +8,6 @@ from __future__ import annotations
 import discord
 from datetime import datetime, timedelta
 from typing import List, Optional
-from google.adk.core import tool
 
 # Global Discord client reference (will be set by the bot)
 _discord_client = None
@@ -20,7 +19,6 @@ def set_discord_client(client):
     _discord_client = client
 
 
-@tool
 def get_current_time() -> str:
     """
     Get the current date and time in a readable format.
@@ -32,7 +30,6 @@ def get_current_time() -> str:
     return now.strftime("%Y-%m-%d %H:%M:%S (%A)")
 
 
-@tool
 def get_time_ago(hours: int = 0, days: int = 0, minutes: int = 0) -> str:
     """
     Calculate time that was X hours/days/minutes ago.
@@ -49,7 +46,6 @@ def get_time_ago(hours: int = 0, days: int = 0, minutes: int = 0) -> str:
     return time_ago.strftime("%Y-%m-%d %H:%M:%S (%A)")
 
 
-@tool
 async def search_user_messages(
     user_ids: List[str],
     channel_id: Optional[str] = "173025825942142977",
