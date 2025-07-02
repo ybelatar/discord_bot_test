@@ -49,7 +49,7 @@ def get_time_ago(hours: int = 0, days: int = 0, minutes: int = 0) -> str:
 async def search_user_messages(
     user_ids: List[str],
     channel_id: Optional[str] = "173025825942142977",
-    hours_back: int = 24,
+    hours_back: int = 240,
     limit: int = 50,
 ) -> str:
     """
