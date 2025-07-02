@@ -2,6 +2,7 @@ import discord
 import os
 from dotenv import load_dotenv
 from src.agent.agent import discord_agent
+from src.agent.tools.tools import set_discord_client
 
 # Load environment variables
 load_dotenv()
@@ -19,6 +20,10 @@ async def on_ready():
     """Prints a message to the console when the bot is connected to Discord."""
     print(f"{client.user} has connected to Discord!")
     print("ADK Advisory Agent is ready to help!")
+
+    # Set the Discord client reference for tools
+    set_discord_client(client)
+    print("Discord client has been set for tools - message search is now available!")
 
 
 @client.event

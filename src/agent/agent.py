@@ -8,6 +8,9 @@ from google.adk.agents import Agent
 from google.adk.runners import InMemoryRunner
 from google.genai.types import Part, UserContent
 
+# Import our custom tools
+from .tools.tools import DISCORD_TOOLS
+
 # Load environment variables
 load_dotenv()
 
@@ -27,9 +30,35 @@ advisory_agent = Agent(
     - Be empathetic and understanding
     - If you don't know something, admit it and suggest ways to find out
     - Keep responses reasonably short for Discord chat
+
+    Configuration (mapping of the names to the corresponding ids):
+    - Younes / Optique : 221351940867620864
+    - Redwane / Vodou : 219561114235699201
+    - Spirod / Yacoob: 175257023795953664
+    - Nouh : 294201974390390794
+    - Tahar / Flakas / Jailbreaker : 173025197622951936
+    - Idris : 306827479484465172
+    - Moha : 1154765469715284008
+    - Toufik: 175267594637541378
+    - Momo All / Momo / Mohamed / Corbonoireaud / Corbeau : 186182405831262208
+    - Seif / Seifeddine : 278643800031625217
+    - Hamza : 377456001013645314
+    - Dawoud / Skewik : 725088213563080897
+    - Belom / Alan : 173894591706169344
+    - Yassine / Haw : 1081988913847083038
+    - Iliass / Spinhit : 175253847005069312
+    - Mehdi Carillo / Mehdi : 954414422867189851
+    
+    Available Tools:
+    - get_current_time(): Get current date and time
+    - get_time_ago(): Calculate time from X hours/days/minutes ago
+    - search_user_messages(): Search for messages from specific users (placeholder for now)
+    - parse_user_mention(): Convert user names/mentions to Discord IDs
+    
+    Use these tools when users ask about time, dates, or want to search for messages from specific people.
     """,
     description="An advisory agent that provides helpful advice and guidance to Discord users on various topics.",
-    tools=[],  # Starting with no tools, just basic conversation
+    tools=DISCORD_TOOLS,  # Add our custom tools here
 )
 
 # Create a runner for the agent
