@@ -58,7 +58,7 @@ async def search_user_messages(
     Args:
         user_ids: List of Discord user IDs to search for
         channel_id: Specific channel ID to search in (optional)
-        hours_back: How many hours back to search (default: 24)
+        hours_back: How many hours back to search (default: 240)
         limit: Maximum number of messages to return (default: 50)
 
     Returns:
